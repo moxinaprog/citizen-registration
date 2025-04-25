@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Фуқарони рўйхатга олиш</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        h2 {
+            text-align: center;
+        }
+        form input, form button, form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        form button:hover {
+            background: #0056b3;
+        }
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .view-link {
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Фуқарони рўйхатга олиш</h2>
+        <form action="/submit" method="post" enctype="multipart/form-data">
+            <input type="text" name="first_name" placeholder="Исм" required>
+            <input type="text" name="last_name" placeholder="Фамилия" required>
+            <input type="text" name="middle_name" placeholder="Шарфи">
+            <input type="text" name="birth_year" placeholder="Туғилган йили">
+            <input type="text" name="passport_number" placeholder="Паспорт рақами">
+            <input type="text" name="house_number" placeholder="Уй рақами">
+            <input type="text" name="mahalla" placeholder="Маҳалла">
+            <input type="text" name="phone_number" placeholder="Телефон рақами">
+                       <style>
+                .file-upload-wrapper {
+                  position: relative;
+                  width: 100%;
+                  margin-top: 10px;
+                }
+              
+                .file-upload-label {
+                  display: block;
+                  padding: 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  background-color: #fff;
+                  text-align:left;
+                  color: #999;
+                  cursor: pointer;
+                }
+                              .file-upload-wrapper input[type="file"] {
+                  display: none;
+                }
+              
+                .file-name {
+                  margin-top: 5px;
+                  font-size: 14px;
+                  color: #333;
+                }
+              </style>
+              
+              <div class="file-upload-wrapper">
+                <label for="passport_file" class="file-upload-label">Паспортни юклаш</label>
+                <input type="file" id="passport_file" name="passport_file" accept=".jpg,.jpeg,.png,.pdf" required>
+                              
+              <script>
+                const input = document.getElementById('passport_file');
+                const fileNameDisplay = document.getElementById('file-name');
+              
+                input.addEventListener('change', function () {
+                  if (this.files.length > 0) {
+                    fileNameDisplay.textContent = this.files[0].name;
+                  }  });
+              </script>
+              
+           
+            
+
+            <button type="submit">Юбориш</button>
+        </form>
+<!-- ...keep all your <head> and <form> as-is -->
+<!-- remove the section below to hide citizen data -->
+<!--
+<h2>Рўйхатдан ўтган фуқаролар</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Исм</th>
+            <th>Фамилия</th>
+            <th>Шарфи</th>
+            <th>Туғ. йили</th>
+            <th>Паспорт №</th>
+            <th>Уй №</th>
+            <th>Маҳалла</th>
+            <th>Телефон</th>
+            <th>Паспорт файл</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>{{ row[6] }}</td>
+            <td>{{ row[7] }}</td>
+            <td>{{ row[8] }}</td>
+            <td><a class="view-link" href="{{ url_for('uploaded_file', filename=row[9]) }}">Кўриш</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+-->
+
+                </table>
+    </div>
+</body>
+</html>
+git init
+git add .
+git commit -m "Initial commit"
+
